@@ -1,0 +1,15 @@
+caps:
+  -
+    videoid: 0
+    prefix: "[1]middle"
+    #  -
+    #videoid: 2
+    #prefix: "[2]right"
+
+detecturl: "http://192.168.1.107:8000/photo"
+capstartpin: 20
+capendpin: 21
+delay: 100
+tokenurl: "http://192.168.1.107:8000/token"
+machineid: "demo"
+password: "123456"
