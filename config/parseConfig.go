@@ -1,14 +1,15 @@
 package config
 
 import (
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
+
+	"gopkg.in/yaml.v2"
 )
 
 type capConfig struct {
-	VideoId int `yaml:"videoid"`
-	Prefix string `yaml:"prefix"`
+	VideoId int    `yaml:"videoid"`
+	Prefix  string `yaml:"prefix"`
 }
 
 var (
@@ -16,17 +17,16 @@ var (
 )
 
 type conf struct {
-	CapConfigs []capConfig `yaml:"caps"`
-	DetectUrl string `yaml:"detecturl"`
-	CapStartPin int `yaml:"capstartpin"`
-	CapEndPin int `yaml:"capendpin"`
-	Delay int `yaml:"delay"`
-	TokenUrl string `yaml:"tokenurl"`
-	MachineId string `yaml:"machineid"`
-	Password string `yaml:"password"`
+	CapConfigs  []capConfig `yaml:"caps"`
+	DetectUrl   string      `yaml:"detecturl"`
+	CapStartPin int         `yaml:"capstartpin"`
+	CapEndPin   int         `yaml:"capendpin"`
+	Delay       int         `yaml:"delay"`
+	MachineId   string      `yaml:"machineid"`
+	Password    string      `yaml:"password"`
 }
 
-func init()  {
+func init() {
 	Config.getConf()
 }
 
