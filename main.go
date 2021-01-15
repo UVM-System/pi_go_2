@@ -23,19 +23,20 @@ func main() {
 			count = 0
 			photo.PostAllImage("start")
 			// 每次发完照片，等待 0.5 秒钟
-			time.Sleep(500 * time.Millisecond)
+			time.Sleep(2000 * time.Millisecond)
 		}
 		if count < - config.Config.Delay{
 			fmt.Println("end...")
 			count = 0
 			photo.PostAllImage("end")
 			// 每次发完照片，等待 0.5 秒钟
-			time.Sleep(500 * time.Millisecond)
+		//	time.Sleep(500 * time.Millisecond)
 		}
+		time.Sleep(500 * time.Millisecond)
 	}
 }
 
-func testCap() {
+func test() {
 	for order := 0; ; order = 0 {
 		fmt.Println("Please input the order: ")
 		fmt.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")

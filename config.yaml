@@ -6,9 +6,9 @@ caps:
     #videoid: 2
     #prefix: "[2]right"
 
-detecturl: "http://192.168.1.105:8000/photo"
+detecturl: "http://192.168.1.101:8000/photo"
 capstartpin: 20
 capendpin: 21
-delay: 100
+delay: 2
 machineid: "demo"
 password: "123456"
