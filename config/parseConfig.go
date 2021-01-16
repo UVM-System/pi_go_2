@@ -17,13 +17,10 @@ var (
 )
 
 type conf struct {
-	CapConfigs  []capConfig `yaml:"caps"`
-	DetectUrl   string      `yaml:"detecturl"`
-	CapStartPin int         `yaml:"capstartpin"`
-	CapEndPin   int         `yaml:"capendpin"`
-	Delay       int         `yaml:"delay"`
-	MachineId   string      `yaml:"machineid"`
-	Password    string      `yaml:"password"`
+	CapConfigs []capConfig `yaml:"caps"`
+	DetectUrl  string      `yaml:"detecturl"`
+	MachineId  string      `yaml:"machineid"`
+	Password   string      `yaml:"password"`
 }
 
 func init() {
