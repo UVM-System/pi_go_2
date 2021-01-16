@@ -2,38 +2,56 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
-	"pi_go_2/config"
 	"pi_go_2/photo"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
+
+// func main() {
+// 	// 等待 5s 等所有摄像头都打开并开始拍照
+// 	time.Sleep(10 * time.Second)
+// 	count := 0
+// 	for {
+// 		if photo.GetCapStartPin() == 0 && photo.GetCapEndPin() == 1 {
+// 			count++
+// 		}else if photo.GetCapEndPin() == 0 && photo.GetCapStartPin() == 1 {
+// 			count--
+// 		}
+// 		if count > config.Config.Delay {
+// 			fmt.Println("start...")
+// 			count = 0
+// 			photo.PostAllImage("start")
+// 			// 每次发完照片，等待 0.5 秒钟
+// 			time.Sleep(2000 * time.Millisecond)
+// 		}
+// 		if count < - config.Config.Delay{
+// 			fmt.Println("end...")
+// 			count = 0
+// 			photo.PostAllImage("end")
+// 			// 每次发完照片，等待 0.5 秒钟
+// 		//	time.Sleep(500 * time.Millisecond)
+// 		}
+// 		time.Sleep(500 * time.Millisecond)
+// 	}
+// }
 
 func main() {
 	// 等待 5s 等所有摄像头都打开并开始拍照
 	time.Sleep(10 * time.Second)
-	count := 0
-	for {
-		if photo.GetCapStartPin() == 0 && photo.GetCapEndPin() == 1 {
-			count++
-		}else if photo.GetCapEndPin() == 0 && photo.GetCapStartPin() == 1 {
-			count--
-		}
-		if count > config.Config.Delay {
-			fmt.Println("start...")
-			count = 0
-			photo.PostAllImage("start")
-			// 每次发完照片，等待 0.5 秒钟
-			time.Sleep(2000 * time.Millisecond)
-		}
-		if count < - config.Config.Delay{
-			fmt.Println("end...")
-			count = 0
-			photo.PostAllImage("end")
-			// 每次发完照片，等待 0.5 秒钟
-		//	time.Sleep(500 * time.Millisecond)
-		}
-		time.Sleep(500 * time.Millisecond)
-	}
+	router := gin.Default()
+	router.POST("/photo", func(context *gin.Context) {
+		state := context.PostForm("state")
+		fmt.Println("state: ", state)
+		photo.PostAllImage(state)
+		context.JSON(http.StatusOK, gin.H{
+			"status":  "SUCCESS",
+			"message": "pi_go_2 finish",
+		})
+	})
+	router.Run(":8000")
 }
 
 func test() {
